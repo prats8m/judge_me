@@ -24,7 +24,7 @@ class Main extends CI_Controller
     'user_name' =>$username,
     'name'=>$user_data['name']
   );
-  $link  = "http://localhost/judge_me/index.php/main/quiz/".$username."/".$user_data['name'];
+  $link  = "http://www.judgemeyar.tk/judge_me/index.php/main/quiz/".$username."/".$user_data['name'];
   $response = $this->mm->insert_user($insertData);
   $this->mm->send_response(true,"Success",$link);
   }
@@ -109,7 +109,7 @@ public function quiz($username,$name){
   $this->session->set_userdata('id',$user_id);
   $this->session->set_userdata('username',$username);
   $this->session->set_userdata('name',$name);
-  header('Location:http://localhost/judgeMe/#!');
+  header('Location:http://www.judgemeyar.tk/judgeMe/#!');
   }
 
 
