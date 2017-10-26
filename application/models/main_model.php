@@ -38,6 +38,12 @@ class Main_model extends CI_Model
   return $query;
 }
 
+ public function list_answers($where){
+  $query= $this->db->get_where('answers',$where)->result_array();
+  // echo $this->db->last_query();
+  return $query;
+}
+
  public function insert_user($insert_data){
  $this->db->insert('user', $insert_data);
  return $this->db->insert_id(); 
@@ -45,6 +51,11 @@ class Main_model extends CI_Model
 
  public function save_response($insert_data){
  $this->db->insert('response', $insert_data); 
+ }
+
+
+ public function save_your_response($insert_data){
+ $this->db->insert('answers', $insert_data); 
  }
 
  public function select_response($user_id){
@@ -64,6 +75,15 @@ return $query->result_array();
  $query = $this->db->query($SQL);
 //  echo $this->db->last_query();
 return $query->result_array(); 
+ }
+
+ public function count_result($uid,$fid){
+   $SQL = "SELECT count(`id`) AS result FROM response  WHERE response.user_id =".$uid." AND response.friend_id =".$fid." AND response.result=1 ORDER BY `friend_id` DESC";
+ $query = $this->db->query($SQL);
+//  echo $this->db->last_query();
+$response = $query->result_array();
+return $response[0]['result']; 
+// print_r($query);
  }
 }
 
