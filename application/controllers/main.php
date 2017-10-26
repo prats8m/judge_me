@@ -130,6 +130,8 @@ class Main extends CI_Controller
   }
 
 public function quiz($username,$name){
+   $name = str_replace("%20"," ",$name);
+  $username = str_replace("%20"," ",$username);
   $where = array('user_name'=>$username);
   $data = $this->mm->select_user($where);
   $user_id = $data[0]['id'];
