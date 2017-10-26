@@ -48,7 +48,7 @@ class Main_model extends CI_Model
  }
 
  public function select_response($user_id){
- $SQL = "SELECT DISTINCT `friend_id`,`name` FROM response INNER JOIN user ON response.friend_id = user.id WHERE response.user_id =".$user_id." ORDER BY response.user_id DESC";
+ $SQL = "SELECT DISTINCT `friend_id`,`name` FROM response INNER JOIN user ON response.friend_id = user.id WHERE response.user_id =".$user_id." ORDER BY `user_id` DESC";
  $query = $this->db->query($SQL);
 //  echo $this->db->last_query();
 return $query->result_array(); 
