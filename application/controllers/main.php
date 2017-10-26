@@ -31,8 +31,8 @@ class Main extends CI_Controller
   $this->session->set_userdata('id',$response);
   $this->session->set_userdata('username',$username);
   $this->session->set_userdata('name',$name);
-  $user_data['name'] = str_replace("","%20",$user_data['name']);
-  $username = str_replace("","%20",$username);
+  $user_data['name'] = str_replace(" ","%20",$user_data['name']);
+  $username = str_replace(" ","%20",$username);
   $link  = "http://www.judgemeyar.tk/judge_me/index.php/main/quiz/".$username."/".$user_data['name'];
   $this->mm->send_response(true,"Success",$link);
   }
