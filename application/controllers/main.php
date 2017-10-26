@@ -38,6 +38,7 @@ class Main extends CI_Controller
   }
 
    public function set_session(){
+     $is_logged_in=$this->session->all_userdata();
   $data = file_get_contents("php://input"); // accept json
   $user_data = json_decode($data, true); // decode json
   $user_data['name'] = str_replace("%20"," ",$user_data['name']);
@@ -45,7 +46,8 @@ class Main extends CI_Controller
   $insertData = array(
     'user_name' =>$username,
     'name'=>$user_data['name'],
-    'type'=>'friend'
+    'type'=>'friend',
+    'other_name'=>$is_logged_in['name']
   );
   $response = $this->mm->insert_user($insertData);
   $this->mm->send_response(true,"Success",$response);
